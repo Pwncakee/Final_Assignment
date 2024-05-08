@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class PlayerController : MonoBehaviour
 {
+    public int rockCount = 0;
     // Start is called before the first frame update
     void Start()
     {
@@ -59,6 +60,11 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.9f);
         animator.SetBool("IsJumping", false);
         //Debug.Log("False");
+    }
+
+    public void GatherRock()
+    {
+        rockCount++;
     }
 
     void OnCollisionEnter(Collision collision)

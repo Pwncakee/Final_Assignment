@@ -11,7 +11,7 @@ public class Throw : MonoBehaviour
     }
 
     // Update is called once per frame
-
+    public PlayerController playerController;
     public float powerThrowForce = 20f;
     public float powerThrowAngle = 330f;
 
@@ -29,13 +29,13 @@ public class Throw : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.F) && Time.time >= lastThrowTime + 0.6f){
-
+            playerController.rockCount++;
             lastThrowTime = Time.time;
             StartCoroutine(PowerThrowAction());
         }
 
         if (Input.GetKeyDown(KeyCode.C) && Time.time >= lastThrowTime + 0.6f){
-
+            playerController.rockCount++;
             lastThrowTime = Time.time;
             StartCoroutine(LightThrowAction());
         }

@@ -29,13 +29,13 @@ public class Throw : MonoBehaviour
     {
 
         if (Input.GetKeyDown(KeyCode.F) && Time.time >= lastThrowTime + 0.6f){
-            playerController.rockCount++;
+            
             lastThrowTime = Time.time;
             StartCoroutine(PowerThrowAction());
         }
 
         if (Input.GetKeyDown(KeyCode.C) && Time.time >= lastThrowTime + 0.6f){
-            playerController.rockCount++;
+            
             lastThrowTime = Time.time;
             StartCoroutine(LightThrowAction());
         }
@@ -45,38 +45,48 @@ public class Throw : MonoBehaviour
 
     IEnumerator PowerThrowAction()
 {
-
+    playerController.rockCount++;
     GetComponent<Animator>().SetTrigger("PowerThrow");
 
     yield return new WaitForSeconds(0.25f);
 
     GameObject rock = Instantiate(rockPrefab, RockSpawnPoint.position, Quaternion.identity);
+    rock.AddComponent<GatherableRock>();
+    rock.GetComponent<GatherableRock>().playerController = playerController;
 
-    // Calculate throw direction based on player's forward direction and throw angle
+    SphereCollider triggerCollider = rock.AddComponent<SphereCollider>();
+    triggerCollider.isTrigger = true;
+
+        // Calculate throw direction based on player's forward direction and throw angle
     Vector3 throwDirection = Quaternion.AngleAxis(powerThrowAngle, transform.right) * transform.forward;
 
     // Apply force to the rock
     rock.GetComponent<Rigidbody>().AddForce(throwDirection * powerThrowForce, ForceMode.Impulse);
 
-    Destroy(rock, 20f);
+    //playerController.rockCount--;
 }
 
 IEnumerator LightThrowAction()
 {
-
+    playerController.rockCount++;
     GetComponent<Animator>().SetTrigger("LightThrow");
 
     yield return new WaitForSeconds(0.45f);
 
     GameObject rock = Instantiate(rockPrefab, RockSpawnPoint.position, Quaternion.identity);
+    rock.AddComponent<GatherableRock>();
+    rock.GetComponent<GatherableRock>().playerController = playerController;
 
-    // Calculate throw direction based on player's forward direction and throw angle
+    SphereCollider triggerCollider = rock.AddComponent<SphereCollider>();
+    triggerCollider.isTrigger = true;
+        // Calculate throw direction based on player's forward direction and throw angle
     Vector3 throwDirection = Quaternion.AngleAxis(lightThrowAngle, transform.right) * transform.forward;
 
     // Apply force to the rock
     rock.GetComponent<Rigidbody>().AddForce(throwDirection * lightThrowForce, ForceMode.Impulse);
 
-    Destroy(rock, 20f);
+
+    //playerController.rockCount--;
 }
 
 }

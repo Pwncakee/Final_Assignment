@@ -2,13 +2,17 @@ using UnityEngine;
 
 public class GatherableRock : MonoBehaviour
 {
+    public bool isBeingThrown = false;
+    public PlayerController playerController;
     void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            other.gameObject.GetComponent<PlayerController>().GatherRock();
+            playerController.rockCount--;
             Destroy(gameObject);
+
         }
     }
 }
+
 

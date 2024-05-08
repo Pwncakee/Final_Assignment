@@ -62,10 +62,6 @@ public class PlayerController : MonoBehaviour
         //Debug.Log("False");
     }
 
-    public void GatherRock()
-    {
-        rockCount++;
-    }
 
     void OnCollisionEnter(Collision collision)
     {

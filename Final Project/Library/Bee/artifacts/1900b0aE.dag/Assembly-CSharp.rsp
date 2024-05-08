@@ -424,6 +424,7 @@
 "Assets/ExplosiveLLC/SuperCharacterController/Code/Examples/SimpleStateMachine.cs"
 "Assets/ExplosiveLLC/SuperCharacterController/Code/Math3d.cs"
 "Assets/Scripts/GatherableRock.cs"
+"Assets/Scripts/LavaDeathZone.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/RockCountDisplay.cs"
 "Assets/Scripts/RockSpawner.cs"

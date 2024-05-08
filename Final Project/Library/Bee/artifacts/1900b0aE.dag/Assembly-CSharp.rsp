@@ -426,6 +426,7 @@
 "Assets/Scripts/GatherableRock.cs"
 "Assets/Scripts/PlayerController.cs"
 "Assets/Scripts/RockCountDisplay.cs"
+"Assets/Scripts/RockSpawner.cs"
 "Assets/Scripts/Throw.cs"
 -langversion:9.0
 

@@ -27,17 +27,22 @@ public class Throw : MonoBehaviour
 
     void Update()
     {
-
+        if (playerController.rockCount <= 0)
+        {
+            return;
+        }
         if (Input.GetKeyDown(KeyCode.F) && Time.time >= lastThrowTime + 0.6f){
             
             lastThrowTime = Time.time;
             StartCoroutine(PowerThrowAction());
+            playerController.rockCount--;
         }
 
         if (Input.GetKeyDown(KeyCode.C) && Time.time >= lastThrowTime + 0.6f){
             
             lastThrowTime = Time.time;
             StartCoroutine(LightThrowAction());
+            playerController.rockCount--;
         }
         
 
@@ -45,12 +50,21 @@ public class Throw : MonoBehaviour
 
     IEnumerator PowerThrowAction()
 {
-    playerController.rockCount++;
     GetComponent<Animator>().SetTrigger("PowerThrow");
 
     yield return new WaitForSeconds(0.25f);
 
-    GameObject rock = Instantiate(rockPrefab, RockSpawnPoint.position, Quaternion.identity);
+    Vector3 spawnPosition = RockSpawnPoint.position;
+
+        // Perform a raycast down to the ground
+    RaycastHit hit;
+    if (Physics.Raycast(spawnPosition + Vector3.up * 50, Vector3.down, out hit, 100f))
+        {
+            // If the raycast hit the ground, set the spawn position to the hit point
+        spawnPosition = hit.point;
+        }
+
+    GameObject rock = Instantiate(rockPrefab, spawnPosition, Quaternion.identity);
     rock.AddComponent<GatherableRock>();
     rock.GetComponent<GatherableRock>().playerController = playerController;
 
@@ -68,12 +82,20 @@ public class Throw : MonoBehaviour
 
 IEnumerator LightThrowAction()
 {
-    playerController.rockCount++;
     GetComponent<Animator>().SetTrigger("LightThrow");
 
     yield return new WaitForSeconds(0.45f);
 
-    GameObject rock = Instantiate(rockPrefab, RockSpawnPoint.position, Quaternion.identity);
+    Vector3 spawnPosition = RockSpawnPoint.position;
+
+        // Perform a raycast down to the ground
+    RaycastHit hit;
+    if (Physics.Raycast(spawnPosition + Vector3.up * 50, Vector3.down, out hit, 100f))
+        {
+            // If the raycast hit the ground, set the spawn position to the hit point
+        spawnPosition = hit.point;
+        }
+    GameObject rock = Instantiate(rockPrefab, spawnPosition, Quaternion.identity);
     rock.AddComponent<GatherableRock>();
     rock.GetComponent<GatherableRock>().playerController = playerController;
 

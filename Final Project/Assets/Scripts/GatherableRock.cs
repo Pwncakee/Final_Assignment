@@ -8,7 +8,7 @@ public class GatherableRock : MonoBehaviour
     {
         if (other.gameObject.CompareTag("Player"))
         {
-            playerController.rockCount--;
+            playerController.rockCount++;
             Destroy(gameObject);
 
         }

@@ -10,7 +10,6 @@ public class PlayerController : MonoBehaviour
     {
         animator = GetComponent<Animator>();
         rb = GetComponent<Rigidbody>();
-        rockCount = 5;
     }
 
     // Update is called once per frame

@@ -6,7 +6,7 @@ TagManager:
   tags:
   - Collide
   - Ground
-  - Monster
+  - lava
   layers:
   - Default
   - TransparentFX

@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.4367009, g: 0.48429936, b: 0.56455064, a: 1}
+  m_IndirectSpecularColor: {r: 0.43670177, g: 0.4843005, b: 0.5645523, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -793,6 +793,7 @@ GameObject:
   - component: {fileID: 1363351194}
   - component: {fileID: 1363351193}
   - component: {fileID: 1363351192}
+  - component: {fileID: 1363351195}
   m_Layer: 0
   m_Name: Mountain
   m_TagString: Ground
@@ -860,6 +861,19 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1363351195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1363351191}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a462f98ca88647a4c86d7c8f487a405c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  respawnPoint: {fileID: 307928481}
 --- !u!1 &1595715013
 GameObject:
   m_ObjectHideFlags: 0
